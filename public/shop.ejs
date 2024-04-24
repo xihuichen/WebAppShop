@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Consultation Services</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/shop.js" defer></script>
+</head>
+<body>
+    <h1>Consultation Services</h1>
+    <form id="purchaseForm" action="/purchase" method="post">
+        <% products.forEach(function(product) { %>
+            <div class="product">
+                <h2><%= product.name %></h2>
+                <p><%= product.description %></p>
+                <p>Duration: <%= product.duration %></p>
+                <p>Price: €<%= product.price %></p>
+                <label for="quantity<%= product.id %>">Quantity:</label>
+                <input type="number" id="quantity<%= product.id %>" name="quantity" min="1" value="1">
+                <input type="hidden" name="productId" value="<%= product.id %>">
+                <button type="submit">Purchase</button>
+            </div>
+        <% }); %>
+    </form>
+</body>
+</html>
